@@ -15,7 +15,7 @@ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
 
-AC_CHECK_HEADER(db.h)
+AC_CHECK_HEADER(db.h,,AC_MSG_ERROR([db.h is required to build gdictthai]))
 AC_CHECK_LIB(db-4.7, db_env_create)
 
 GETTEXT_PACKAGE=gdictthai
