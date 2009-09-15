@@ -1,0 +1,28 @@
+GDictThai
+v.0.0.4
+Copyright (c) 2005-2008 kitty.in.th 
+Maintainer: Kitt Tientanopajai <kitty@kitty.in.th>
+
+1. Description
+==============
+GDictThai is a GTK+ English-Thai Dictionary. This project aims to develop a
+simple E-T dictionary for GTK+/GNOME environment. The dictionary database is
+taken from KDictThai, a KDE-based English-Thai Dictionary. 
+
+2. Requirements
+===============
+GTK+ >= 2.4
+libglade >= 2.2
+Berkeley DB >= 4.7
+
+3. Known Issues
+===============
+3.1 The meaning showed is not formatted. Next version would be better.
+
+4. Todos
+========
+4.1 Share dictionary with KDictThai and/or cetdict (they are identical, 
+   I guess).
+4.2 Better display of meaning.
+4.3 Use libicu32/libthai ?
+4.4 Error Handling

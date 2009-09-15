@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0.0
+Encoding=UTF-8
+Name=GDictThai
+Comment=A GTK+ English-Thai Dictionary
+Exec=gdictthai
+Icon=gdictthai.png
+Terminal=false
+Type=Application
+Categories=Application;Utility
+GenericName[en_US]=

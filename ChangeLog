@@ -1,0 +1,43 @@
+GDictThai 0.0.4 - Tue, 21 Oct 2008 21:10:36 +0700
+	* Use Berkeley DB 4.7 (2008/10/21)
+	* About dialog can now be closed.
+
+- Kitt Tientanopajai <kitty@kitty.in.th>
+
+GDictThai 0.0.3 - Sun, 15 Jan 2006 02:43:30 +0700
+	* tdictthai.c - an option to display only meaning (2006/01/15)
+	* Makefile.am - fixed pixmaps and desktop installation errors (2006/01/22)
+
+- Kitt Tientanopajai <kitty@kitty.in.th>
+
+GDictThai 0.0.2 - Thu, 12 Jan 2006 09:47:43 +0700
+	* Move to libglade
+	* Bugs fixed
+		- Correct project's URL in the about dialog
+		- libdb >= 3.2
+		- Correct symlink
+	* Clean up
+		- exit (1) -> exit (EXIT_FAILURE)
+		- callbacks.c: gconvert() changes 'int len' to 'gsize len'
+	* New
+		- Add desktop menu
+		- gdictthai.pot - just touch it up 
+		- Add tooltips
+		- Show the number of words at the status bar
+	
+- Kitt Tientanopajai <kitty@kitty.in.th>
+
+GDictThai 0.0.1 - Mon Oct  3 00:02:17 ICT 2005
+
+	* UI revisited
+	
+- Kitt Tientanopajai <kitty@kitty.in.th>
+
+GDictThai 0.0.0 - Fri Sep 30 03:07:01 ICT 2005
+
+	* Project started.
+	  - UI Designed on GLADE
+	* Basic callbacks
+	* Basic dictionary manipulation
+	
+- Kitt Tientanopajai <kitty@kitty.in.th>
