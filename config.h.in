@@ -21,8 +21,8 @@
 /* Define if your <locale.h> file defines LC_MESSAGES. */
 #undef HAVE_LC_MESSAGES
 
-/* Define to 1 if you have the `db-4.7' library (-ldb-4.7). */
-#undef HAVE_LIBDB_4_7
+/* Define to 1 if you have the `sqlite3' library (-lsqlite3). */
+#undef HAVE_LIBSQLITE3
 
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H
