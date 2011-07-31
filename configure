@@ -2604,7 +2604,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=gdictthai
- VERSION=0.0.4
+ VERSION=0.1.0
 
 
 cat >>confdefs.h <<_ACEOF
@@ -5653,21 +5653,21 @@ fi
 done
 
 
-ac_fn_c_check_header_mongrel "$LINENO" "db.h" "ac_cv_header_db_h" "$ac_includes_default"
-if test "x$ac_cv_header_db_h" = x""yes; then :
+ac_fn_c_check_header_mongrel "$LINENO" "sqlite3.h" "ac_cv_header_sqlite3_h" "$ac_includes_default"
+if test "x$ac_cv_header_sqlite3_h" = x""yes; then :
 
 else
-  as_fn_error $? "db.h is required to build gdictthai" "$LINENO" 5
+  as_fn_error $? "sqlite3.h is required to build gdictthai" "$LINENO" 5
 fi
 
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for db_env_create in -ldb-4.7" >&5
-$as_echo_n "checking for db_env_create in -ldb-4.7... " >&6; }
-if test "${ac_cv_lib_db_4_7_db_env_create+set}" = set; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for sqlite3_open in -lsqlite3" >&5
+$as_echo_n "checking for sqlite3_open in -lsqlite3... " >&6; }
+if test "${ac_cv_lib_sqlite3_sqlite3_open+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
   ac_check_lib_save_LIBS=$LIBS
-LIBS="-ldb-4.7  $LIBS"
+LIBS="-lsqlite3  $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -5677,32 +5677,32 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 #ifdef __cplusplus
 extern "C"
 #endif
-char db_env_create ();
+char sqlite3_open ();
 int
 main ()
 {
-return db_env_create ();
+return sqlite3_open ();
   ;
   return 0;
 }
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_lib_db_4_7_db_env_create=yes
+  ac_cv_lib_sqlite3_sqlite3_open=yes
 else
-  ac_cv_lib_db_4_7_db_env_create=no
+  ac_cv_lib_sqlite3_sqlite3_open=no
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_db_4_7_db_env_create" >&5
-$as_echo "$ac_cv_lib_db_4_7_db_env_create" >&6; }
-if test "x$ac_cv_lib_db_4_7_db_env_create" = x""yes; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_sqlite3_sqlite3_open" >&5
+$as_echo "$ac_cv_lib_sqlite3_sqlite3_open" >&6; }
+if test "x$ac_cv_lib_sqlite3_sqlite3_open" = x""yes; then :
   cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBDB_4_7 1
+#define HAVE_LIBSQLITE3 1
 _ACEOF
 
-  LIBS="-ldb-4.7 $LIBS"
+  LIBS="-lsqlite3 $LIBS"
 
 fi
 

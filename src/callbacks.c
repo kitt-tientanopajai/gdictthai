@@ -11,7 +11,6 @@
 
 #include "dictionary.h"
 
-
 void
 on_keyword_entry_changed               (GtkEditable     *editable,
                                         gpointer         user_data)
@@ -19,7 +18,7 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 	/* get keyword -> search */
 	gchar *keyword = (gchar *) gtk_editable_get_chars (editable, 0, -1);
 	gchar *meaning = NULL;
-	if (keyword != NULL)
+	if (keyword != NULL || strlen (keyword) != 0)
 	{
 		/* to lowercase */
 		int len = strlen (keyword);
@@ -31,9 +30,9 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 
 		/* check if it is ascii */
 		if (isalpha (keyword[0]))
-		{
 			meaning = (gchar *) dictionary_search (keyword);
-		}
+		else
+			return;
 	}
 
 	/* clear the text buffer */
@@ -45,9 +44,6 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 	/* if the meaning exists, put it in the text buffer */
 	if (meaning != NULL) 
 	{
-		/* convert to UTF-8 */
-		gsize len;
-		gchar *meaning_utf8 = g_convert (meaning, strlen (meaning), "UTF-8", "TIS-620", NULL, &len, NULL);
 		gchar *first_match_word = (gchar *) dictionary_get_first_matched_word ();
 
 		/* put to the text buffer */
@@ -55,17 +51,16 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 		gtk_text_buffer_get_iter_at_offset (text_buffer, &iter, 0);
 		gtk_text_buffer_insert_with_tags_by_name (text_buffer, &iter, first_match_word, -1, "keyword", NULL);
 		gtk_text_buffer_insert (text_buffer, &iter, "\n\t", -1);
-		gtk_text_buffer_insert (text_buffer, &iter, meaning_utf8, len);
+		gtk_text_buffer_insert (text_buffer, &iter, meaning, strlen (meaning));
 		gtk_text_view_set_buffer (GTK_TEXT_VIEW (meaning_textview), text_buffer);
 
-		g_free (meaning_utf8);
 	}
 	g_free (meaning);
 
 	/* update word list */	
 	GtkWidget *wordlist_treeview = glade_xml_get_widget (ui, "wordlist_treeview");
 	GtkListStore *list_store = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (wordlist_treeview)));
-	
+
 	/* detach the list */
 	g_object_ref (list_store);
 	gtk_tree_view_set_model (GTK_TREE_VIEW (wordlist_treeview), NULL);
@@ -74,7 +69,7 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 	int items = 0;
 	gtk_list_store_clear (list_store);
 	GtkTreeIter iter;
-	gchar *word = (gchar *) dictionary_get_next_word ();
+	gchar *word = (gchar *) dictionary_get_first_matched_word ();
 	while (word != NULL) 
 	{
 		gtk_list_store_append (list_store, &iter);
@@ -82,7 +77,7 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 		word = (gchar *) dictionary_get_next_word ();
 		items++;
 	}
-	
+
 	/* re-attach the list */
 	gtk_tree_view_set_model (GTK_TREE_VIEW (wordlist_treeview), GTK_TREE_MODEL (list_store));
 	g_object_unref (list_store);
@@ -100,7 +95,6 @@ on_keyword_entry_changed               (GtkEditable     *editable,
 		gtk_statusbar_push (GTK_STATUSBAR (statusbar), context_id, "Ready");
 	}
 }
-
 
 void
 on_treeview_cursor_changed             (GtkTreeView     *treeview,
@@ -122,7 +116,6 @@ on_treeview_cursor_changed             (GtkTreeView     *treeview,
 	}
 }
 
-
 void
 on_quit_menuitem_activate               (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
@@ -131,7 +124,6 @@ on_quit_menuitem_activate               (GtkMenuItem     *menuitem,
 	g_object_unref (G_OBJECT (ui));
   gtk_main_quit ();
 }
-
 
 void
 on_copy_menuitem_activate              (GtkMenuItem     *menuitem,
@@ -143,7 +135,6 @@ on_copy_menuitem_activate              (GtkMenuItem     *menuitem,
 	GtkClipboard *clipboard = gtk_clipboard_get (GDK_NONE);
 	gtk_text_buffer_copy_clipboard (buffer, clipboard);
 }
-
 
 void
 on_paste_menuitem_activate             (GtkMenuItem     *menuitem,
