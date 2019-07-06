@@ -1,3 +1,6 @@
+GDictThai 0.6.0 - Sat  6 Jul 15:51:00 +07 2019
+	* SQLite 3
+
 GDictThai 0.0.4 - Tue, 21 Oct 2008 21:10:36 +0700
 	* Use Berkeley DB 4.7 (2008/10/21)
 	* About dialog can now be closed.
